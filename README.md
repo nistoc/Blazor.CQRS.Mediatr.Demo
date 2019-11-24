@@ -1,0 +1,1 @@
+# Blazor.CQRS.Mediatr.Demo02
