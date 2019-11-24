@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using BlazorApp.Application.Commands;
+using BlazorApp.Application.Models;
 using MediatR;
 using Microsoft.AspNetCore.Components;
 
@@ -45,9 +47,27 @@ namespace BlazorApp.Pages
         }
 
 
+        protected override async Task OnInitializedAsync()
+        {
+            var selections = await Mediator.Send(new GetSelectionsQuery());
+            Model = new ViewModel(selections.Roles, selections.Names);
+        }
 
+        public class GetSelectionsQuery : IRequest<SelectionsDto> { }
 
+        public class GetSelectionsQueryHandler : IRequestHandler<GetSelectionsQuery, SelectionsDto>
+        {
+            public async Task<SelectionsDto> Handle(GetSelectionsQuery request, CancellationToken cancellationToken)
+            {
+                await Task.Delay(4000);
 
+                return  new SelectionsDto
+                {
+                    Names = new List<string>{ "Dostoevskii", "Mendeleev", "Matreshka" },
+                    Roles= new List<string> { "chemist", "russian doll", "philosopher"}
+                };
+            }
+        }
 
         public class ViewModel
         {
