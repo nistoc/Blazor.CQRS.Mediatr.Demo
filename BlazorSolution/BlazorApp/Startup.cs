@@ -31,7 +31,7 @@ namespace BlazorApp
             services.AddRazorPages();
             services.AddServerSideBlazor().AddCircuitOptions(o =>
             {
-                if (this.WebHostEnvironment.IsDevelopment())
+                if (WebHostEnvironment.IsDevelopment())
                 {
                     o.DetailedErrors = true;
                 }
@@ -42,9 +42,9 @@ namespace BlazorApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
+            if (WebHostEnvironment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
