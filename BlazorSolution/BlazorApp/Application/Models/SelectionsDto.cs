@@ -12,4 +12,5 @@ namespace BlazorApp.Application.Models
         public SelectionsDto()
         {
         }
+    }
 }
