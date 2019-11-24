@@ -59,7 +59,7 @@ namespace BlazorApp.Pages
         {
             public async Task<SelectionsDto> Handle(GetSelectionsQuery request, CancellationToken cancellationToken)
             {
-                await Task.Delay(4000);
+                await Task.Delay(900);
 
                 return  new SelectionsDto
                 {
