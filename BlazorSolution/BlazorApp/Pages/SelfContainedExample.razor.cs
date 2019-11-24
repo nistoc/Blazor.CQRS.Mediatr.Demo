@@ -1,12 +1,9 @@
-﻿using System;
+﻿using MediatR;
+using Microsoft.AspNetCore.Components;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using BlazorApp.Application.Commands;
-using BlazorApp.Application.Models;
-using MediatR;
-using Microsoft.AspNetCore.Components;
 
 namespace BlazorApp.Pages
 {
@@ -66,6 +63,29 @@ namespace BlazorApp.Pages
                     Names = new List<string>{ "Dostoevskii", "Mendeleev", "Matreshka" },
                     Roles= new List<string> { "chemist", "russian doll", "philosopher"}
                 };
+            }
+        }
+
+        public class SelectionsDto
+        {
+            public IList<String> Names { get; set; }
+
+            public IList<String> Roles { get; set; }
+
+            public SelectionsDto()
+            {
+            }
+        }
+
+        public class VerifyAnswerCommand : IRequest<Boolean>
+        {
+
+            public String Name { get; set; } = String.Empty;
+
+            public String Role { get; set; } = String.Empty;
+
+            public VerifyAnswerCommand()
+            {
             }
         }
 
