@@ -1,0 +1,50 @@
+﻿@page "/webApiStyleExample"
+@inherits WebApiStyleExampleBase
+
+<h3>Test Your Matching Skills</h3>
+
+<p>This page demonstrates putting all of the logic for this page in the code-behind.<br />The use of nested classes keeps all the code in a single file.<br />This is one technique that Jimmy Bogard explained in his 2018 NDC session</p>
+<p><strong>Your task is to select a role, and then select a matching name.</strong></p>
+
+<p>Note: validation is not enable on this form to simplify it.</p>
+<p>Note: A 1/2 second delay was added to simulate network calls.</p>
+
+@if (Model != null)
+{
+    <EditForm Model="Model">
+
+        <p>
+            <label for="role">Role: </label>
+            <InputSelect id="role" @bind-Value="Model.SelectedRole">
+                <option value="">Select role ...</option>
+                @foreach (var role in Model.Roles)
+                    {
+                    <option value=@role>@role</option>
+                    }
+                /**/
+                /**/
+                /**/
+                /**/
+            </InputSelect>
+        </p>
+
+        <p>
+            <label for="role">Name: </label>
+            <InputSelect id="role" @bind-Value="Model.SelectedName">
+                <option value="">Select name ...</option>
+                @foreach (var name in Model.Names)
+                    {
+                    <option value=@name>@name</option>
+                    }
+                /**/
+                /**/
+                /**/
+                /**/
+            </InputSelect>
+        </p>
+
+        <button class="btn btn-primary" @onclick="@VerifySelections">Verify Selections</button>
+    </EditForm>
+
+    <p><strong>Result:</strong> @Result</p>
+}
