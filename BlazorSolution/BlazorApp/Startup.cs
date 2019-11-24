@@ -29,7 +29,7 @@ namespace BlazorApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddServerSideBlazor().AddCircuitOptions(o =>
+            services.AddServerSideBlazor().AddCircuitOptions(o => // this option enables the much reacher error message
             {
                 if (WebHostEnvironment.IsDevelopment())
                 {
